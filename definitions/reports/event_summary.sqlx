@@ -1,6 +1,6 @@
 config {
   type: "table",
-  name: "reporting_summary"
+
 }
 
 SELECT
