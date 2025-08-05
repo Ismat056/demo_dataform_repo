@@ -1,6 +1,6 @@
 config {
   type: "view",
-  name:"event_names_with_count"
+  name: "event_names_with_count"
 }
 
 SELECT
@@ -10,4 +10,7 @@ SELECT
 FROM
   ${ref("events_20250804")}
 GROUP BY
+  event_name,
   event_date
+ORDER BY
+  event_date, event_count DESC
