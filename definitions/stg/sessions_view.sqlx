@@ -1,0 +1,16 @@
+config {
+  type: "view",
+  name: "session_counts_by_day"
+}
+
+SELECT
+  event_date,
+  COUNT(*) AS session_count
+FROM
+  ${ref("events")}
+WHERE
+  event_name = "session_start"
+GROUP BY
+  event_date
+ORDER BY
+  event_date

@@ -1,0 +1,14 @@
+config {
+  type: "view",
+  name: "event_names_with_count"
+}
+
+SELECT
+  event_name,
+  COUNT(*) AS event_count
+FROM
+  ${ref("events")}
+GROUP BY
+  event_name
+ORDER BY
+  event_count DESC

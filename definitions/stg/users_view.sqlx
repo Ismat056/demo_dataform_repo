@@ -1,0 +1,10 @@
+config {
+  type: "view"
+}
+
+SELECT
+  user_pseudo_id
+FROM
+  ${ref("events")}
+GROUP BY
+  user_pseudo_id

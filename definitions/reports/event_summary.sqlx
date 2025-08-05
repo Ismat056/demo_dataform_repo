@@ -1,0 +1,10 @@
+config {
+  type: "table",
+  name: "reporting_summary"
+}
+
+SELECT
+  event_name,
+  event_count
+FROM
+  ${ref("event_names_with_count")}
