@@ -2,5 +2,5 @@ config {
   type: "declaration",
   database: "codezone-465722",
   schema: "analytics_480513919",
-  name: "events_20250804",
+  name: "events_*",
 }
