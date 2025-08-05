@@ -4,7 +4,29 @@ config {
 }
 
 SELECT
-  event_name,
-  event_count
+  "event_name" AS metric_name,
+  event_name AS metric_value,
+  event_count AS metric_count,
+  NULL AS date
 FROM
   ${ref("event_names_with_count")}
+
+UNION ALL
+
+SELECT
+  "sessions" AS metric_name,
+  NULL AS metric_value,
+  session_count AS metric_count,
+  event_date AS date
+FROM
+  ${ref("session_counts_by_day")}
+
+UNION ALL
+
+SELECT
+  "users" AS metric_name,
+  NULL AS metric_value,
+  user_count AS metric_count,
+  NULL AS date
+FROM
+  ${ref("user_count")}

@@ -5,8 +5,9 @@ config {
 
 SELECT
   event_name,
+  event_date,
   COUNT(*) AS event_count
 FROM
   ${ref("events")}
 GROUP BY
-  event_name
+  event_date
