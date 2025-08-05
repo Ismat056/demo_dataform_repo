@@ -7,7 +7,7 @@ SELECT
   event_date,
   COUNT(*) AS session_count
 FROM
-  ${ref("events")}
+  ${ref("events_20250804")}
 WHERE
   event_name = "session_start"
 GROUP BY

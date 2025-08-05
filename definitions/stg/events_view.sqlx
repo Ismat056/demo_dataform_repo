@@ -8,6 +8,6 @@ SELECT
   event_date,
   COUNT(*) AS event_count
 FROM
-  ${ref("events")}
+  ${ref("events_20250804")}
 GROUP BY
   event_date
