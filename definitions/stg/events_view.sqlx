@@ -10,5 +10,3 @@ FROM
   ${ref("events")}
 GROUP BY
   event_name
-ORDER BY
-  event_count DESC
