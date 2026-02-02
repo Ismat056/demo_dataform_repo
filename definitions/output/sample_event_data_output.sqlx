@@ -1,0 +1,16 @@
+config {
+  type: "table",
+  tags: ["events","outputs"],
+  description: "Output events table: unnested, cleaned, clustered data with several fixes",
+  bigquery: {
+    partitionBy: "date",
+  },
+}
+
+select
+date,
+user_pseudo_id,
+count(distinct user_pseudo_id) as active_users,
+page_location,
+from ${ref("stg_events")}
+group by page_location, user_pseudo_id, date

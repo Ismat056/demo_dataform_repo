@@ -1,0 +1,30 @@
+config {
+  type: "table",
+  tags: ["users","outputs"],
+  description: "Output users table: unnested, cleaned, clustered data with several fixes",
+  bigquery: {
+    partitionBy: "date",
+    clusterBy: ["date"],
+  },
+}
+
+with prep as (
+select
+parse_date("%Y%m%d", event_date) as date,
+traffic_source.source as source,
+traffic_source.medium as medium,
+traffic_source.name as campaign,
+user_pseudo_id,
+--concat(user_pseudo_id, (select value.int_value from unnest(event_params) where key = "ga_session_id")) as session_id,
+from ${ref("ga4_sample_data")}
+where traffic_source.source not in ("<Other>", "(data deleted)")
+group by date, source, medium, campaign, user_pseudo_id
+)
+
+select
+*
+from prep
+
+
+
+

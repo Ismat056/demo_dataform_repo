@@ -1,0 +1,17 @@
+config {
+  type: "table",
+  tags: ["users","outputs"],
+  description: "Output users table: unnested, cleaned, clustered data with several fixes",
+  bigquery: {
+    partitionBy: "date",
+  },
+}
+
+select
+date,
+source,
+medium,
+campaign,
+count(distinct user_pseudo_id) as users
+from ${ref("stg_user_acquisition")}
+group by all
